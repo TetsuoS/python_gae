@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ゲストブック</title>
+    <link rel="stylesheet" href="/static/main.css" type="text/css" />   
+  </head>
+  <body>
+   <div id="main">
+    <h1>ゲストブック</h1>
+    <div id="form-area">
+    <p>書き込みをどうぞ。</p>
+   
+    <form action="/post" method="post">
+      <table>
+        <tr>
+          <th>名前</th>
+          <td>
+            <input type="text" size="20" name="name" />
+	  </td>
+	</tr>
+	<tr>
+	  <th>コメント</th>
+	  <td>
+	    <textarea rows="5" cols="40" name="comment"></textarea>
+	  </td>
+	</tr>
+      </table>
+     <p><button type="submit">送信</button></p>
+   </form>
+   </div>
+   <div id="entries-area">
+    <h2>これまでの書き込み</h2>
+    <div class="entry">
+      {% for greeting in greeting_list %}
+       <h3>{{ greeting.name  }}さんの書き込み({{  greeting.create_at|datetime_fmt  }}):</h3>
+       <p> {{ greeting.comment|nl2br }} </p>
+      {% endfor %}
+   </div>
+  </div>
+ </div>
+</body>
+</html>
+  </body>
+</html>
+    
